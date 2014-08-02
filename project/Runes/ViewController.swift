@@ -33,7 +33,7 @@ class ViewController: UIViewController, LevelViewDelegate {
         self.view.addSubview(self.backgroundOverlayView)
 
         // Do any additional setup after loading the view, typically from a nib.
-        NSBundle.mainBundle().loadNibNamed("Designer", owner: self, options: nil)
+        NSBundle.mainBundle().loadNibNamed("0", owner: self, options: nil)
         self.view.addSubview(levelView)
         
         levelView.backgroundColor = UIColor.clearColor()
