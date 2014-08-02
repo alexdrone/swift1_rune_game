@@ -21,6 +21,8 @@
 		166ED702198D14430002E147 /* FBShimmeringView.h in Headers */ = {isa = PBXBuildFile; fileRef = 166ED6FC198D14430002E147 /* FBShimmeringView.h */; };
 		166ED703198D14430002E147 /* FBShimmeringView.m in Sources */ = {isa = PBXBuildFile; fileRef = 166ED6FD198D14430002E147 /* FBShimmeringView.m */; };
 		166ED704198D14430002E147 /* FBShimmeringView.m in Sources */ = {isa = PBXBuildFile; fileRef = 166ED6FD198D14430002E147 /* FBShimmeringView.m */; };
+		166ED709198D1B090002E147 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166ED708198D1B090002E147 /* RootViewController.swift */; };
+		166ED70A198D1B090002E147 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166ED708198D1B090002E147 /* RootViewController.swift */; };
 		168E1E8F1986AF6E00C56E3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168E1E8E1986AF6E00C56E3E /* AppDelegate.swift */; };
 		168E1E911986AF6E00C56E3E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168E1E901986AF6E00C56E3E /* ViewController.swift */; };
 		168E1E961986AF6E00C56E3E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 168E1E951986AF6E00C56E3E /* Images.xcassets */; };
@@ -101,6 +103,7 @@
 		166ED6FB198D14430002E147 /* FBShimmeringLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBShimmeringLayer.m; sourceTree = "<group>"; };
 		166ED6FC198D14430002E147 /* FBShimmeringView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBShimmeringView.h; sourceTree = "<group>"; };
 		166ED6FD198D14430002E147 /* FBShimmeringView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBShimmeringView.m; sourceTree = "<group>"; };
+		166ED708198D1B090002E147 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		168E1E891986AF6E00C56E3E /* Runes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Runes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		168E1E8D1986AF6E00C56E3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		168E1E8E1986AF6E00C56E3E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -231,6 +234,7 @@
 				166ED58E198D08DA0002E147 /* Levels */,
 				168E1E8E1986AF6E00C56E3E /* AppDelegate.swift */,
 				168E1E901986AF6E00C56E3E /* ViewController.swift */,
+				166ED708198D1B090002E147 /* RootViewController.swift */,
 				168E1E951986AF6E00C56E3E /* Images.xcassets */,
 				168E1E8C1986AF6E00C56E3E /* Supporting Files */,
 				166ED6F4198D13CC0002E147 /* Runes-Bridging-Header.h */,
@@ -436,6 +440,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				166ED709198D1B090002E147 /* RootViewController.swift in Sources */,
 				166ED700198D14430002E147 /* FBShimmeringLayer.m in Sources */,
 				168E1E911986AF6E00C56E3E /* ViewController.swift in Sources */,
 				168E1E8F1986AF6E00C56E3E /* AppDelegate.swift in Sources */,
@@ -450,6 +455,7 @@
 				168E1EFC1987F26600C56E3E /* Extensions.swift in Sources */,
 				166ED704198D14430002E147 /* FBShimmeringView.m in Sources */,
 				168E1EFD1987F26600C56E3E /* Appearance.swift in Sources */,
+				166ED70A198D1B090002E147 /* RootViewController.swift in Sources */,
 				166ED701198D14430002E147 /* FBShimmeringLayer.m in Sources */,
 				161380531988CE6A0044FC95 /* LevelView.swift in Sources */,
 				168E1ED91987EE8600C56E3E /* DotView.swift in Sources */,

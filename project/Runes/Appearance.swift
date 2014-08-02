@@ -95,9 +95,9 @@ enum Glyph: String {
     
     case X = "X"
     case Z = "S"
-    case T = "T"
+    case T = "Y"
     case O = "O"
-    case J = "P"
+    case J = "F"
     
     /// Returns a glyph from the given integer
     static func fromInteger(integer: Int) -> Glyph {

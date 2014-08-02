@@ -15,6 +15,8 @@ class ViewController: UIViewController, LevelViewDelegate {
     
     /// subviews
     @IBOutlet var levelView: LevelView
+    var levelWrapperView: FBShimmeringView?
+    
     var backgroundView: ImageView?
     var backgroundOverlayView: ImageView?
     
@@ -34,7 +36,14 @@ class ViewController: UIViewController, LevelViewDelegate {
 
         // Do any additional setup after loading the view, typically from a nib.
         NSBundle.mainBundle().loadNibNamed("0", owner: self, options: nil)
-        self.view.addSubview(levelView)
+//        self.view.addSubview(levelView)
+        
+        self.levelWrapperView = FBShimmeringView(frame: self.view.bounds)
+        self.levelWrapperView!.contentView = self.levelView
+        self.view.addSubview(self.levelWrapperView)
+        self.levelWrapperView!.shimmering = true
+        self.levelWrapperView!.shimmeringSpeed = 60
+        
         
         levelView.backgroundColor = UIColor.clearColor()
         self.view.backgroundColor = ColorSwatch.LightBlue
