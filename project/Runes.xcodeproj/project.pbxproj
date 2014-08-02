@@ -14,6 +14,13 @@
 		1664C4CD198C0425009AD4FA /* mountains-front@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1664C4C9198C0425009AD4FA /* mountains-front@2x.png */; };
 		166ED591198D08DA0002E147 /* 0.xib in Resources */ = {isa = PBXBuildFile; fileRef = 166ED58F198D08DA0002E147 /* 0.xib */; };
 		166ED592198D08DA0002E147 /* Designer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 166ED590198D08DA0002E147 /* Designer.xib */; };
+		166ED6FE198D14430002E147 /* FBShimmering.h in Headers */ = {isa = PBXBuildFile; fileRef = 166ED6F9198D14430002E147 /* FBShimmering.h */; };
+		166ED6FF198D14430002E147 /* FBShimmeringLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 166ED6FA198D14430002E147 /* FBShimmeringLayer.h */; };
+		166ED700198D14430002E147 /* FBShimmeringLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 166ED6FB198D14430002E147 /* FBShimmeringLayer.m */; };
+		166ED701198D14430002E147 /* FBShimmeringLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 166ED6FB198D14430002E147 /* FBShimmeringLayer.m */; };
+		166ED702198D14430002E147 /* FBShimmeringView.h in Headers */ = {isa = PBXBuildFile; fileRef = 166ED6FC198D14430002E147 /* FBShimmeringView.h */; };
+		166ED703198D14430002E147 /* FBShimmeringView.m in Sources */ = {isa = PBXBuildFile; fileRef = 166ED6FD198D14430002E147 /* FBShimmeringView.m */; };
+		166ED704198D14430002E147 /* FBShimmeringView.m in Sources */ = {isa = PBXBuildFile; fileRef = 166ED6FD198D14430002E147 /* FBShimmeringView.m */; };
 		168E1E8F1986AF6E00C56E3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168E1E8E1986AF6E00C56E3E /* AppDelegate.swift */; };
 		168E1E911986AF6E00C56E3E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168E1E901986AF6E00C56E3E /* ViewController.swift */; };
 		168E1E961986AF6E00C56E3E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 168E1E951986AF6E00C56E3E /* Images.xcassets */; };
@@ -88,6 +95,12 @@
 		1664C4C9198C0425009AD4FA /* mountains-front@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mountains-front@2x.png"; sourceTree = "<group>"; };
 		166ED58F198D08DA0002E147 /* 0.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = 0.xib; sourceTree = "<group>"; };
 		166ED590198D08DA0002E147 /* Designer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Designer.xib; sourceTree = "<group>"; };
+		166ED6F4198D13CC0002E147 /* Runes-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Runes-Bridging-Header.h"; sourceTree = "<group>"; };
+		166ED6F9198D14430002E147 /* FBShimmering.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBShimmering.h; sourceTree = "<group>"; };
+		166ED6FA198D14430002E147 /* FBShimmeringLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBShimmeringLayer.h; sourceTree = "<group>"; };
+		166ED6FB198D14430002E147 /* FBShimmeringLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBShimmeringLayer.m; sourceTree = "<group>"; };
+		166ED6FC198D14430002E147 /* FBShimmeringView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBShimmeringView.h; sourceTree = "<group>"; };
+		166ED6FD198D14430002E147 /* FBShimmeringView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBShimmeringView.m; sourceTree = "<group>"; };
 		168E1E891986AF6E00C56E3E /* Runes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Runes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		168E1E8D1986AF6E00C56E3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		168E1E8E1986AF6E00C56E3E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -171,12 +184,34 @@
 			path = Levels;
 			sourceTree = "<group>";
 		};
+		166ED6F7198D14250002E147 /* ThirdParty */ = {
+			isa = PBXGroup;
+			children = (
+				166ED6F8198D14430002E147 /* Shimmering */,
+			);
+			name = ThirdParty;
+			sourceTree = "<group>";
+		};
+		166ED6F8198D14430002E147 /* Shimmering */ = {
+			isa = PBXGroup;
+			children = (
+				166ED6F9198D14430002E147 /* FBShimmering.h */,
+				166ED6FA198D14430002E147 /* FBShimmeringLayer.h */,
+				166ED6FB198D14430002E147 /* FBShimmeringLayer.m */,
+				166ED6FC198D14430002E147 /* FBShimmeringView.h */,
+				166ED6FD198D14430002E147 /* FBShimmeringView.m */,
+			);
+			name = Shimmering;
+			path = ThirdParty/Shimmering;
+			sourceTree = "<group>";
+		};
 		168E1E801986AF6E00C56E3E = {
 			isa = PBXGroup;
 			children = (
 				168E1E8B1986AF6E00C56E3E /* Runes */,
 				168E1EB51987EE2D00C56E3E /* MicroKit */,
 				168E1E8A1986AF6E00C56E3E /* Products */,
+				166ED6F7198D14250002E147 /* ThirdParty */,
 				168E1EE31987F00300C56E3E /* Resources */,
 			);
 			sourceTree = "<group>";
@@ -198,6 +233,7 @@
 				168E1E901986AF6E00C56E3E /* ViewController.swift */,
 				168E1E951986AF6E00C56E3E /* Images.xcassets */,
 				168E1E8C1986AF6E00C56E3E /* Supporting Files */,
+				166ED6F4198D13CC0002E147 /* Runes-Bridging-Header.h */,
 			);
 			path = Runes;
 			sourceTree = "<group>";
@@ -263,7 +299,10 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				166ED6FF198D14430002E147 /* FBShimmeringLayer.h in Headers */,
 				168E1EB91987EE2D00C56E3E /* MicroKit.h in Headers */,
+				166ED702198D14430002E147 /* FBShimmeringView.h in Headers */,
+				166ED6FE198D14430002E147 /* FBShimmering.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,8 +436,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				166ED700198D14430002E147 /* FBShimmeringLayer.m in Sources */,
 				168E1E911986AF6E00C56E3E /* ViewController.swift in Sources */,
 				168E1E8F1986AF6E00C56E3E /* AppDelegate.swift in Sources */,
+				166ED703198D14430002E147 /* FBShimmeringView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,7 +448,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				168E1EFC1987F26600C56E3E /* Extensions.swift in Sources */,
+				166ED704198D14430002E147 /* FBShimmeringView.m in Sources */,
 				168E1EFD1987F26600C56E3E /* Appearance.swift in Sources */,
+				166ED701198D14430002E147 /* FBShimmeringLayer.m in Sources */,
 				161380531988CE6A0044FC95 /* LevelView.swift in Sources */,
 				168E1ED91987EE8600C56E3E /* DotView.swift in Sources */,
 			);
@@ -513,10 +556,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Runes/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runes/Runes-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -525,10 +571,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Runes/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runes/Runes-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -550,6 +598,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Runes/Runes-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -570,6 +619,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Runes/Runes-Bridging-Header.h";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};

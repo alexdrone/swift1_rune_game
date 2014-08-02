@@ -82,7 +82,7 @@ import QuartzCore
         }
         
         if !self.selectionLayer {
-            
+                        
             //initialize the cirlce layer inside of it
             self.selectionLayer = CALayer()
             self.selectionLayer!.frame = CGRectInset(self.bounds, 0, 0)
@@ -154,6 +154,7 @@ import QuartzCore
             (value: Bool) in
             
         })
+        
     }
     
     /// Creates a line between the two dots

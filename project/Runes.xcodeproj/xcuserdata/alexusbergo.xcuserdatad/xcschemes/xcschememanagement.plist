@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Libs.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
 		<key>MicroKit.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -14,9 +19,44 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>ThirdParty.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>166ED62E198D0F6D0002E147</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>166ED638198D0F6D0002E147</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>166ED6A8198D11270002E147</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>166ED6B2198D11270002E147</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>166ED6CC198D115B0002E147</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>166ED6D6198D115B0002E147</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>168E1E881986AF6E00C56E3E</key>
 		<dict>
 			<key>primary</key>
