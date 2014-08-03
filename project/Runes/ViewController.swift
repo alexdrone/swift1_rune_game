@@ -135,8 +135,8 @@ class ViewController: UIViewController, LevelViewDelegate {
             dot.matched = true;
             dot.currentDot = false;
             
-            //cretes the line between the two dots
-            self.levelView.layer.addSublayer(dot.createLineLayerToDot(nextDot))
+            //cretes the line between the two dots                        
+            self.levelView.layer.insertSublayer(dot.createLineLayerToDot(nextDot), below: nextDot.layer)
             
             self.playConnectionSound()
         }
@@ -183,7 +183,7 @@ class ViewController: UIViewController, LevelViewDelegate {
         self.audioPlayer.prepareToPlay()
         self.audioPlayer.play()
         
-        AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate));
+//        AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate));
     }
 
 }

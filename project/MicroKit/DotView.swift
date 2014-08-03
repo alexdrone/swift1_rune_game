@@ -115,7 +115,7 @@ import QuartzCore
     func selectDot(select: Bool) {
         
         if select {
-            self.cirleLayer!.backgroundColor = self.color.color(alpha: 0.6).CGColor
+            self.cirleLayer!.backgroundColor = self.color.color(alpha: 0.8).CGColor
             self.selectedDot = true
             
         } else {
