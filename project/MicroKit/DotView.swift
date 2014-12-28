@@ -9,12 +9,12 @@
 import UIKit
 import QuartzCore
 
-@IBDesignable class Dot : UIView {
+@IBDesignable public class Dot : UIView {
     
     //inspectable properties
     @IBInspectable var glyphEncoding: NSInteger = 0 {
         didSet {
-             self.glyph = Glyph.fromInteger(glyphEncoding)
+             self.glyph = Glyph.fromInteger(glyphEncoding).__conversion()
         }
     }
 
@@ -31,30 +31,30 @@ import QuartzCore
     }
     
     //properties
-    var glyph: String = Glyph.random() {
+    public var glyph: String = Glyph.random().__conversion() {
         didSet {
             self.layoutSubviews()
         }
     }
 
-    var color: ColorSwatch = ColorSwatch.random() {
+    public var color: ColorSwatch = ColorSwatch.random() {
         didSet {
             self.layoutSubviews()
         }
     }
     
     /// true if the dot is currently selected
-    var selectedDot: Bool = false
+    public var selectedDot: Bool = false
     
     /// true if it's the player dot, false otherwise
-    var currentDot: Bool = false {
+    public var currentDot: Bool = false {
         didSet {
             self.layoutSubviews()
         }
     }
     
     /// wheter a dot is matched or not (takes care of its visual treatment)
-    var matched: Bool = false {
+    public var matched: Bool = false {
         didSet {
             self.color = ColorSwatch.LightGreen
             self.pop()
@@ -62,16 +62,16 @@ import QuartzCore
     }
     
     //subviews
-    var cirleLayer: CALayer?
-    var selectionLayer: CALayer?
-    var iconLabel: UILabel?
+    public var cirleLayer: CALayer?
+    public var selectionLayer: CALayer?
+    public var iconLabel: UILabel?
     
-    override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
         
         self.backgroundColor = UIColor.clearColor()
     
-        if !self.cirleLayer {
+        if !(self.cirleLayer != nil) {
             
             //initialize the cirlce layer inside of it
             self.cirleLayer = CALayer()
@@ -81,7 +81,7 @@ import QuartzCore
             self.layer.addSublayer(self.cirleLayer)
         }
         
-        if !self.selectionLayer {
+        if !(self.selectionLayer != nil) {
                         
             //initialize the cirlce layer inside of it
             self.selectionLayer = CALayer()
@@ -93,14 +93,14 @@ import QuartzCore
             self.layer.addSublayer(self.selectionLayer)
         }
         
-        if !self.iconLabel {
+        if !(self.iconLabel != nil) {
             
             self.iconLabel = UILabel(frame:  CGRectInset(self.bounds, 12, 12))
             self.iconLabel!.backgroundColor = UIColor.clearColor()
-            self.iconLabel!.textColor = ColorSwatch.Black
-            self.iconLabel!.font = UIFont(name: TypographyTrait.Glyph.toRaw(), size: CGRectGetHeight(self.iconLabel!.bounds))
+            self.iconLabel!.textColor = ColorSwatch.Black.__conversion()
+            self.iconLabel!.font = UIFont(name: TypographyTrait.Glyph.rawValue, size: CGRectGetHeight(self.iconLabel!.bounds))
             self.iconLabel!.textAlignment = NSTextAlignment.Center
-            self.addSubview(self.iconLabel)
+            self.addSubview(self.iconLabel!)
         }
         
         //configuration
@@ -112,7 +112,7 @@ import QuartzCore
     }
     
     /// Enable or disable the circoular marker around the dot
-    func selectDot(select: Bool) {
+    public func selectDot(select: Bool) {
         
         if select {
             self.cirleLayer!.backgroundColor = self.color.color(alpha: 0.8).CGColor
@@ -125,7 +125,7 @@ import QuartzCore
     }
     
     /// Returns true if two dots are adjacent in the matrix, false otherwise
-    func isAdjacent(dot: Dot) -> Bool {
+    public func isAdjacent(dot: Dot) -> Bool {
         
         let thisX = self.tag/10
         let thisY = self.tag - (thisX*10)
@@ -144,7 +144,7 @@ import QuartzCore
     }
     
     /// starts spinning the dot
-    func pop(duration: NSTimeInterval = 2) {
+    public func pop(duration: NSTimeInterval = 2) {
         
         self.transform = CGAffineTransformMakeScale(0.9, 0.9)
         UIView.animateWithDuration(duration, delay: 0, usingSpringWithDamping: 0.2, initialSpringVelocity: 0, options: nil, animations: {
@@ -158,13 +158,15 @@ import QuartzCore
     }
     
     /// Creates a line between the two dots
-    func createLineLayerToDot(dot: Dot, lineWidth: CGFloat = 32) -> CALayer {
+    public func createLineLayerToDot(dot: Dot, lineWidth: CGFloat = 32) -> CALayer {
         
         let a = self.center
         let b = dot.center
         
         let center = CGPointMake(0.5 * (a.x + b.x), 0.5 * (a.y + b.y))
-        let lenght = sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y))
+        
+        let value = (a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y)
+        let lenght = sqrt(value)
         let angle = atan2(a.y - b.y, a.x - b.x)
         
         let layer = CALayer()
@@ -178,7 +180,7 @@ import QuartzCore
     }
     
     
-    override func hitTest(point: CGPoint, withEvent event: UIEvent!) -> UIView!
+    override public func hitTest(point: CGPoint, withEvent event: UIEvent!) -> UIView?
     {
         print(point)
         return super.hitTest(point, withEvent: event)

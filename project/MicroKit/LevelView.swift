@@ -9,7 +9,7 @@
 import UIKit
 
 
-protocol LevelViewDelegate : NSObjectProtocol {
+public protocol LevelViewDelegate : NSObjectProtocol {
     
     /// Called when the user touch is over a dot
     func levelView(LevelView: AnyObject, beganTouchWithDot dot: Dot)
@@ -21,15 +21,15 @@ protocol LevelViewDelegate : NSObjectProtocol {
     func levelViewTouchesEnded(LevelView: AnyObject)
 }
 
-class LevelView : UIView {
+public class LevelView : UIView {
     
     /// The level delegate
-    var delegate: LevelViewDelegate?
-    var beganTouches: Bool = false
-    var abortSelection: Bool = false
+    public var delegate: LevelViewDelegate?
+    public var beganTouches: Bool = false
+    public var abortSelection: Bool = false
     
     /// Tells the receiver when one or more fingers touch down in a view or window.
-    override func touchesBegan(touches: NSSet!, withEvent event: UIEvent!) {
+    override public func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         
         self.abortSelection = false
         
@@ -47,7 +47,7 @@ class LevelView : UIView {
     }
     
     /// Tells the receiver when one or more fingers associated with an event move within a view or window.
-    override func touchesMoved(touches: NSSet!, withEvent event: UIEvent!) {
+    override public func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
         
         if !self.beganTouches || self.abortSelection {
             return
@@ -67,7 +67,7 @@ class LevelView : UIView {
     }
     
     /// Tells the receiver when one or more fingers are raised from a view or window.
-    override func touchesEnded(touches: NSSet!, withEvent event: UIEvent!) {
+    override public func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
         
         if !self.beganTouches || self.abortSelection {
             return

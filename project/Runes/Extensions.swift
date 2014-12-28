@@ -57,23 +57,23 @@ extension UIColor {
 }
 
 
-class ImageView: UIImageView {
+public class ImageView: UIImageView {
     
     /// Add a nice horizontal motion effect to the view
     var _motionEffectGroup: UIMotionEffectGroup?
-    var motionEffect: Double = 0 {
+    public var motionEffect: Double = 0 {
         didSet {
         
-            if motionEffect == 0 && _motionEffectGroup {
+            if (motionEffect == 0 && _motionEffectGroup != nil) {
                 
                 self.removeMotionEffect(_motionEffectGroup!)
                 _motionEffectGroup = nil
             
             } else {
                 
-                if !_motionEffectGroup {
+                if !(_motionEffectGroup != nil) {
                     _motionEffectGroup = UIMotionEffectGroup()
-                    self.addMotionEffect(_motionEffectGroup)
+                    self.addMotionEffect(_motionEffectGroup!)
                 }
                 
                 let xAxis = UIInterpolatingMotionEffect(keyPath: "center.x", type: UIInterpolatingMotionEffectType.TiltAlongHorizontalAxis)

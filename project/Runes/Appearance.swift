@@ -8,8 +8,8 @@
 
 import UIKit
 
-/// The default color palette used by the kit
-enum ColorSwatch : UInt32 {
+// The default color palette used by the kit
+public enum ColorSwatch : UInt32 {
     
     //general
     case White = 0xffffff
@@ -26,12 +26,12 @@ enum ColorSwatch : UInt32 {
     case Purple = 0x9b85f5
     
     // Returns a random color
-    static func random() -> ColorSwatch {
+    public static func random() -> ColorSwatch {
         return self.fromInteger(Int(arc4random_uniform(5)))
     }
     
     /// Creates a color swatch from a given integer
-    static func fromInteger(integer: Int) -> ColorSwatch {
+    public static func fromInteger(integer: Int) -> ColorSwatch {
         
         switch integer % 5 {
             case 0: return .Green
@@ -45,17 +45,17 @@ enum ColorSwatch : UInt32 {
     }
     
     /// Returns the color associated with the color swatch
-    func color(alpha: CGFloat = 1) -> UIColor {
-        return UIColor.colorWithRGB888(self.toRaw(), alpha: alpha)
+    public func color(alpha: CGFloat = 1) -> UIColor {
+        return UIColor.colorWithRGB888(self.rawValue, alpha: alpha)
     }
     
-    func __conversion() -> UIColor {
+    public func __conversion() -> UIColor {
         return self.color(alpha: 1)
     }
 }
 
 /// The typography classes (point sizes)
-enum TypographySize: CGFloat {
+public enum TypographySize: CGFloat {
     
     case SuperSmall = 10.0
     case ExtreSmall = 12.0
@@ -68,7 +68,7 @@ enum TypographySize: CGFloat {
 }
 
 /// The typography classes
-enum TypographyTrait: String {
+public enum TypographyTrait: String {
     
     case Italic = "QuickSand-Italic"
     case Light = "QuickSand-Light"
@@ -79,19 +79,19 @@ enum TypographyTrait: String {
     case Glyph = "VIKING,-ELDER-Runes-Bold"
 }
 
-struct Typography {
+public struct Typography {
     
     let trait: TypographyTrait;
     let size: TypographySize;
     
     // Returns the font associated with this typography description
-    func __conversion() -> UIFont {
-        return UIFont(name: self.trait.toRaw(), size:self.size.toRaw())
+    public func __conversion() -> UIFont {
+        return UIFont(name: trait.rawValue, size: size.rawValue)!
     }
 }
 
 // The glyphs used in the game
-enum Glyph: String {
+public enum Glyph: String {
     
     case X = "X"
     case Z = "S"
@@ -100,7 +100,7 @@ enum Glyph: String {
     case J = "F"
     
     /// Returns a glyph from the given integer
-    static func fromInteger(integer: Int) -> Glyph {
+    public static func fromInteger(integer: Int) -> Glyph {
         
         switch integer % 5 {
             case 0: return .X
@@ -114,12 +114,13 @@ enum Glyph: String {
     }
     
     // Returns a random glyph
-    static func random() -> Glyph {
+    public static func random() -> Glyph {
         return self.fromInteger(Int(arc4random_uniform(5)))
     }
     
-    func __conversion() -> String {
-        return self.toRaw()
+    public func __conversion() -> String {
+        return self.rawValue
     }
 }
+
 

@@ -12,9 +12,10 @@ import AVFoundation
 import AudioToolbox
 
 class ViewController: UIViewController, LevelViewDelegate {
-    
+
+
     /// subviews
-    @IBOutlet var levelView: LevelView
+    @IBOutlet var levelView: LevelView?
     var levelWrapperView: FBShimmeringView?
     
     var backgroundView: ImageView?
@@ -22,32 +23,33 @@ class ViewController: UIViewController, LevelViewDelegate {
     
     var dotStack: [Dot] = [Dot]()
     var audioPlayer = AVAudioPlayer()
-
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         //the background view
         self.backgroundView = ImageView(image: UIImage(named: "mountains-back"))
-        self.view.addSubview(self.backgroundView)
         
         self.backgroundOverlayView =  ImageView(image: UIImage(named: "mountains-front"))
-        self.view.addSubview(self.backgroundOverlayView)
-
+        
         // Do any additional setup after loading the view, typically from a nib.
         NSBundle.mainBundle().loadNibNamed("0", owner: self, options: nil)
-//        self.view.addSubview(levelView)
+        //        self.view.addSubview(levelView)
         
-        self.levelWrapperView = FBShimmeringView(frame: self.view.bounds)
+        self.levelWrapperView = FBShimmeringView(frame: CGRectZero)
         self.levelWrapperView!.contentView = self.levelView
-        self.view.addSubview(self.levelWrapperView)
         self.levelWrapperView!.shimmering = true
         self.levelWrapperView!.shimmeringSpeed = 60
         
+        self.levelView!.backgroundColor = UIColor.clearColor()
+        self.levelView!.delegate = self
+
+        self.levelWrapperView!.frame = self.view.bounds;
+        self.view.addSubview(self.backgroundView!)
+        self.view.addSubview(self.backgroundOverlayView!)
+        self.view.addSubview(self.levelWrapperView!)
         
-        levelView.backgroundColor = UIColor.clearColor()
-        self.view.backgroundColor = ColorSwatch.LightBlue
-        self.levelView.delegate = self
+        self.view.backgroundColor = ColorSwatch.LightBlue.__conversion()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -136,7 +138,7 @@ class ViewController: UIViewController, LevelViewDelegate {
             dot.currentDot = false;
             
             //cretes the line between the two dots                        
-            self.levelView.layer.insertSublayer(dot.createLineLayerToDot(nextDot), below: nextDot.layer)
+            self.levelView!.layer.insertSublayer(dot.createLineLayerToDot(nextDot), below: nextDot.layer)
             
             self.playConnectionSound()
         }
@@ -151,7 +153,7 @@ class ViewController: UIViewController, LevelViewDelegate {
     /// Abort the current dot selection
     func abortSelection() {
         
-        self.levelView.abortSelection = true
+        self.levelView!.abortSelection = true
         
         for dot in self.dotStack {
             dot.selectDot(false)
@@ -164,8 +166,8 @@ class ViewController: UIViewController, LevelViewDelegate {
     /// Plays the 'crescendo' sound during the selection of the dots
     func playSelectionSound(sound: Int? = nil) {
         
-        let count = sound ? sound : (self.dotStack.count%7) + 1
-        let url = NSBundle.mainBundle().URLForResource("\(count)", withExtension: "m4a")
+        let count = (sound != nil) ? sound : (self.dotStack.count%7) + 1
+        let url = NSBundle.mainBundle().URLForResource(NSString(format: "%d", count!), withExtension: "m4a")
 
         self.audioPlayer = AVAudioPlayer(contentsOfURL: url, error: nil)
         self.audioPlayer.volume = 0.3
