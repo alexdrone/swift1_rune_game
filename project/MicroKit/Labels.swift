@@ -8,10 +8,10 @@
 
 import UIKit
 
-public class TimeLabel: UILabel {
+public class TimeLabel : UILabel {
     
     public class func defaultSize() -> CGSize {
-        return CGSize(width: 50, height: 35)
+        return CGSize(width: 70, height: 35)
     }
     
     public var time: Int = 30 {
@@ -48,5 +48,42 @@ public class TimeLabel: UILabel {
         self.text = dateFormatter.stringFromDate(NSDate(timeIntervalSince1970: NSTimeInterval(time)))
     }
     
+}
+
+public class ScoreLabel : UILabel {
+    
+    public class func defaultSize() -> CGSize {
+        return CGSize(width: 100, height: 35)
+    }
+    
+    public var score: Int = 0 {
+        didSet {
+            self.formatScore(score)
+        }
+    }
+    
+    override public init(frame: CGRect) {
+        super.init(frame: frame)
+        self.commonInit()
+    }
+    
+    required public init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.commonInit()
+    }
+    
+    func commonInit() {
+        
+        //setup
+        self.textColor = ColorSwatch.White.__conversion()
+        self.font = Typography(trait: .Light, size: .Small).__conversion()
+        self.backgroundColor = UIColor.clearColor()
+        self.textAlignment = NSTextAlignment.Center
+        self.formatScore(score)
+    }
+    
+    func formatScore(score: Int) {
+        self.text = NSString(format:"%d ⌘ ", score)
+    }
     
 }

@@ -10,8 +10,8 @@ import Foundation
 
 public enum PointModifier : Int {
     
-    case PointsPerSelectedDot = 10
-    case PointsPerSecond = 5
+    case PointsPerSelectedDot = 8
+    case PointsPerSecond = 4
     
     /// Returns the new score after applying the modifier
     public func scoreByApplyingModifier(score: Int, modifier: PointModifier, times: Int = 1) -> Int {

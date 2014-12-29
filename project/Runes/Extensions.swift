@@ -54,6 +54,28 @@ extension UIColor {
         return UIColor(red: r, green: g, blue: b, alpha: alpha)
     }
     
+    
+    public func darkerColorWithPercent(percent: CGFloat) -> UIColor {
+        
+        var r:CGFloat = 0
+        var g:CGFloat = 0
+        var b:CGFloat = 0
+        var a:CGFloat = 0
+        
+        self.getRed(&r, green: &g, blue: &b, alpha: &a)
+        return UIColor(red: min(r, r+percent), green: min(g, g+percent), blue: min(b, b+percent), alpha: a)
+    }
+    
+    public func lighterColorWithPercent(percent: CGFloat) -> UIColor {
+        
+        var r:CGFloat = 0
+        var g:CGFloat = 0
+        var b:CGFloat = 0
+        var a:CGFloat = 0
+        
+        self.getRed(&r, green: &g, blue: &b, alpha: &a)
+        return UIColor(red: max(0, r-percent), green: max(0, g-percent), blue: max(0, b-percent), alpha: a)
+    }
 }
 
 

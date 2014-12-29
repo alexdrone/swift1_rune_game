@@ -45,7 +45,9 @@
 		16B6E8651A507EFC003BA2D4 /* FBShimmeringLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B6E8621A507EFC003BA2D4 /* FBShimmeringLayer.m */; };
 		16B6E8661A507EFC003BA2D4 /* FBShimmeringView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B6E8641A507EFC003BA2D4 /* FBShimmeringView.m */; };
 		16B6E8681A514A12003BA2D4 /* GameConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B6E8671A514A12003BA2D4 /* GameConstants.swift */; };
-		16B6E86A1A514EF0003BA2D4 /* TimeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B6E8691A514EF0003BA2D4 /* TimeLabel.swift */; };
+		16B6E86A1A514EF0003BA2D4 /* Labels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B6E8691A514EF0003BA2D4 /* Labels.swift */; };
+		16B6E86C1A517EE3003BA2D4 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B6E86B1A517EE3003BA2D4 /* Models.swift */; };
+		16B6E86F1A518B3C003BA2D4 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B6E86E1A518B3C003BA2D4 /* Background.swift */; };
 		16DCB99119896E470014E79C /* 1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 16DCB98919896E470014E79C /* 1.m4a */; };
 		16DCB99219896E470014E79C /* 2.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 16DCB98A19896E470014E79C /* 2.m4a */; };
 		16DCB99319896E470014E79C /* 3.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 16DCB98B19896E470014E79C /* 3.m4a */; };
@@ -122,7 +124,9 @@
 		16B6E8631A507EFC003BA2D4 /* FBShimmeringView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBShimmeringView.h; path = ThirdParty/FBShimmeringView.h; sourceTree = "<group>"; };
 		16B6E8641A507EFC003BA2D4 /* FBShimmeringView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBShimmeringView.m; path = ThirdParty/FBShimmeringView.m; sourceTree = "<group>"; };
 		16B6E8671A514A12003BA2D4 /* GameConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameConstants.swift; sourceTree = "<group>"; };
-		16B6E8691A514EF0003BA2D4 /* TimeLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLabel.swift; sourceTree = "<group>"; };
+		16B6E8691A514EF0003BA2D4 /* Labels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Labels.swift; sourceTree = "<group>"; };
+		16B6E86B1A517EE3003BA2D4 /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Models.swift; path = Levels/Models.swift; sourceTree = "<group>"; };
+		16B6E86E1A518B3C003BA2D4 /* Background.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
 		16DCB98919896E470014E79C /* 1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 1.m4a; sourceTree = "<group>"; };
 		16DCB98A19896E470014E79C /* 2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 2.m4a; sourceTree = "<group>"; };
 		16DCB98B19896E470014E79C /* 3.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 3.m4a; sourceTree = "<group>"; };
@@ -224,6 +228,7 @@
 				166ED708198D1B090002E147 /* RootViewController.swift */,
 				16B6E8671A514A12003BA2D4 /* GameConstants.swift */,
 				16B6E85D1A507E67003BA2D4 /* Runes-Bridging-Header.h */,
+				16B6E86B1A517EE3003BA2D4 /* Models.swift */,
 				168E1E951986AF6E00C56E3E /* Images.xcassets */,
 				168E1E8C1986AF6E00C56E3E /* Supporting Files */,
 			);
@@ -245,7 +250,8 @@
 				168E1EAB1986B04100C56E3E /* Appearance.swift */,
 				168E1ED81987EE8600C56E3E /* DotView.swift */,
 				161380521988CE6A0044FC95 /* LevelView.swift */,
-				16B6E8691A514EF0003BA2D4 /* TimeLabel.swift */,
+				16B6E8691A514EF0003BA2D4 /* Labels.swift */,
+				16B6E86E1A518B3C003BA2D4 /* Background.swift */,
 				168E1EB81987EE2D00C56E3E /* MicroKit.h */,
 				168E1EB61987EE2D00C56E3E /* Supporting Files */,
 			);
@@ -445,6 +451,7 @@
 				16B6E8661A507EFC003BA2D4 /* FBShimmeringView.m in Sources */,
 				168E1E8F1986AF6E00C56E3E /* AppDelegate.swift in Sources */,
 				16B6E8681A514A12003BA2D4 /* GameConstants.swift in Sources */,
+				16B6E86C1A517EE3003BA2D4 /* Models.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,7 +460,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				168E1EFC1987F26600C56E3E /* Extensions.swift in Sources */,
-				16B6E86A1A514EF0003BA2D4 /* TimeLabel.swift in Sources */,
+				16B6E86F1A518B3C003BA2D4 /* Background.swift in Sources */,
+				16B6E86A1A514EF0003BA2D4 /* Labels.swift in Sources */,
 				168E1EFD1987F26600C56E3E /* Appearance.swift in Sources */,
 				166ED70A198D1B090002E147 /* RootViewController.swift in Sources */,
 				161380531988CE6A0044FC95 /* LevelView.swift in Sources */,
