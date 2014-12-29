@@ -11,7 +11,8 @@ import QuartzCore
 
 @IBDesignable public class Dot : UIView {
     
-    //inspectable properties
+    //inspectable properties (wrappers to the other properties)
+    //must be private, accessible only from IB
     @IBInspectable var glyphEncoding: NSInteger = 0 {
         didSet {
              self.glyph = Glyph.fromInteger(glyphEncoding).__conversion()
@@ -27,6 +28,12 @@ import QuartzCore
     @IBInspectable var currentDotEncoding: NSInteger = 0 {
         didSet {
             self.currentDot = currentDotEncoding > 0 ? true : false
+        }
+    }
+    
+    @IBInspectable var endDotEncoding: NSInteger = 0 {
+        didSet {
+            self.endDot = endDotEncoding > 0 ? true : false
         }
     }
     
@@ -48,6 +55,13 @@ import QuartzCore
     
     /// true if it's the player dot, false otherwise
     public var currentDot: Bool = false {
+        didSet {
+            self.layoutSubviews()
+        }
+    }
+    
+    /// true if it's the puzzle end dot, false otherwise
+    public var endDot: Bool = false {
         didSet {
             self.layoutSubviews()
         }
@@ -154,7 +168,6 @@ import QuartzCore
             (value: Bool) in
             
         })
-        
     }
     
     /// Creates a line between the two dots
@@ -180,9 +193,7 @@ import QuartzCore
     }
     
     
-    override public func hitTest(point: CGPoint, withEvent event: UIEvent!) -> UIView?
-    {
-        print(point)
+    override public func hitTest(point: CGPoint, withEvent event: UIEvent!) -> UIView? {
         return super.hitTest(point, withEvent: event)
     }
     

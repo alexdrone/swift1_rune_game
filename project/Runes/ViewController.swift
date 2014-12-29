@@ -11,48 +11,54 @@ import MicroKit
 import AVFoundation
 import AudioToolbox
 
-class ViewController: UIViewController, LevelViewDelegate {
+public class ViewController: UIViewController, LevelViewDelegate {
 
-
-    /// subviews
-    @IBOutlet var levelView: LevelView?
-    var levelWrapperView: FBShimmeringView?
-    
-    var backgroundView: ImageView?
-    var backgroundOverlayView: ImageView?
-    
+    /// the name of the xib file describing the current level
+    public var levelName = "0"
     var dotStack: [Dot] = [Dot]()
     var audioPlayer = AVAudioPlayer()
     
-    override func viewDidLoad() {
+    /// subviews
+    @IBOutlet var levelView: LevelView?
+    var levelWrapperView: FBShimmeringView?
+    var backgroundView: ImageView?
+    var backgroundOverlayView: ImageView?
+    var timeLabel: TimeLabel?
+    
+    override public func viewDidLoad() {
         super.viewDidLoad()
     
+        // Do any additional setup after loading the view, typically from a nib.
+        NSBundle.mainBundle().loadNibNamed(levelName, owner: self, options: nil)
+        
         //the background view
         self.backgroundView = ImageView(image: UIImage(named: "mountains-back"))
         
         self.backgroundOverlayView =  ImageView(image: UIImage(named: "mountains-front"))
-        
-        // Do any additional setup after loading the view, typically from a nib.
-        NSBundle.mainBundle().loadNibNamed("0", owner: self, options: nil)
-        //        self.view.addSubview(levelView)
-        
-        self.levelWrapperView = FBShimmeringView(frame: CGRectZero)
+
+        self.levelWrapperView = FBShimmeringView(frame:  self.view.bounds)
         self.levelWrapperView!.contentView = self.levelView
         self.levelWrapperView!.shimmering = true
         self.levelWrapperView!.shimmeringSpeed = 60
-        
+
         self.levelView!.backgroundColor = UIColor.clearColor()
         self.levelView!.delegate = self
 
-        self.levelWrapperView!.frame = self.view.bounds;
+        self.timeLabel = TimeLabel(frame: CGRectMake(self.view.bounds.size.width - TimeLabel.defaultSize().width, 20, TimeLabel.defaultSize().width, TimeLabel.defaultSize().height))
+        self.levelView!.timeLabel = self.timeLabel
+
         self.view.addSubview(self.backgroundView!)
         self.view.addSubview(self.backgroundOverlayView!)
         self.view.addSubview(self.levelWrapperView!)
+        self.view.addSubview(self.timeLabel!)
+        
+        self.view.setTranslatesAutoresizingMaskIntoConstraints(false)
         
         self.view.backgroundColor = ColorSwatch.LightBlue.__conversion()
     }
     
-    override func viewDidAppear(animated: Bool) {
+
+    override public func viewDidAppear(animated: Bool) {
         
         for view in self.levelView!.subviews {
             if view is Dot {
@@ -77,16 +83,15 @@ class ViewController: UIViewController, LevelViewDelegate {
                 (value: Bool) in
                 self.backgroundOverlayView!.motionEffect = 40
             })
-        
     }
 
-    override func didReceiveMemoryWarning() {
+    override public func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     /// Called when the user touch is over a dot
-    func levelView(LevelView: AnyObject, beganTouchWithDot dot: Dot) {
+    public func levelView(LevelView: AnyObject, beganTouchWithDot dot: Dot) {
         
         // reset the stack
         self.dotStack = [Dot]()
@@ -105,7 +110,7 @@ class ViewController: UIViewController, LevelViewDelegate {
     }
 
     /// Called when the user touch is over a dot
-    func levelView(LevelView: AnyObject, didTouchDot dot: Dot) {
+    public func levelView(LevelView: AnyObject, didTouchDot dot: Dot) {
         
         if dot.matched {
             self.abortSelection()
@@ -126,7 +131,7 @@ class ViewController: UIViewController, LevelViewDelegate {
     }
     
     /// The user interaction is over
-    func levelViewTouchesEnded(LevelView: AnyObject) {
+    public func levelViewTouchesEnded(LevelView: AnyObject) {
         
         //matches all the dots
         for index in 0..<self.dotStack.count-1 {
@@ -146,9 +151,24 @@ class ViewController: UIViewController, LevelViewDelegate {
         let dot = self.dotStack[self.dotStack.count-1]
         dot.currentDot = true
         
-        // reset the stack
+        //reset the stack
         self.dotStack = [Dot]()
+        
+        //puzzle completed
+        if dot.endDot {
+            self.levelView?.endDotSelected = true
+        }
     }
+    
+    /// The time is up or the player reached the end dot
+    public func levelView(LevelView: AnyObject, levelOverWithSuccess success: Bool) {
+        
+        if success {
+            print("Good boy!")
+        } else {
+            print("Game over!")
+        }
+     }
     
     /// Abort the current dot selection
     func abortSelection() {

@@ -19,14 +19,55 @@ public protocol LevelViewDelegate : NSObjectProtocol {
     
     /// The user interaction is over
     func levelViewTouchesEnded(LevelView: AnyObject)
+    
+    /// The time is up or the player reached the end dot
+    func levelView(LevelView: AnyObject, levelOverWithSuccess success: Bool)
 }
 
-public class LevelView : UIView {
+@IBDesignable public class LevelView : UIView {
     
     /// The level delegate
     public var delegate: LevelViewDelegate?
+    
+    /// The level time
+    @IBInspectable public var time: Int = 30;
+    public weak var timeLabel: TimeLabel?
+
+    // flags
     public var beganTouches: Bool = false
     public var abortSelection: Bool = false
+    public var endDotSelected: Bool = false {
+        didSet {
+            if (endDotSelected) {
+                self.levelOver()
+            }
+        }
+    }
+    
+    // private
+    var timer: NSTimer?
+    
+    //PRAGMA MARK: Init
+    
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.commonInit()
+    }
+
+    required public init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.commonInit()
+    }
+    
+    func commonInit() {
+        self.timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("tick"), userInfo: nil, repeats: true)
+    }
+    
+    deinit {
+        self.timer?.invalidate()
+    }
+    
+    //PRAGMA MARK: Touches
     
     /// Tells the receiver when one or more fingers touch down in a view or window.
     override public func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
@@ -76,4 +117,32 @@ public class LevelView : UIView {
         self.delegate?.levelViewTouchesEnded(self)
     }
     
+    //PRAGMA MARK: Timer
+    
+    func tick() {
+        
+        if self.time > 0 {
+            self.time--
+            self.timeLabel?.time = self.time
+        }
+        
+        // time's up!
+        if self.time == 1 {
+            self.levelOver()
+        }
+    }
+    
+    
+    //PRAGMA MARK: Level over
+    
+    func levelOver() {
+        
+        //stops the timer
+        self.timer?.invalidate()
+        
+        //notifies the delegate
+        let success = self.endDotSelected
+        self.delegate?.levelView(self, levelOverWithSuccess: success)
+    }
+
 }
