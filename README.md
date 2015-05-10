@@ -1,6 +1,6 @@
 swift-rune
 ==========
 
-![MyVideo](design/demo.mov)
+![rune](design/rune.gif)
 
 An iOS game inspired by 'Dots' based on the nordic runes
